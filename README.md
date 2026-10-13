@@ -1,10 +1,30 @@
 # Animation Toolbox
 
+[English](README.en.md) · [AI 使用入口](SKILL.md) · [贡献指南](CONTRIBUTING.md)
+
+[![Tests](https://github.com/FeyZha/animation-toolbox/actions/workflows/tests.yml/badge.svg)](https://github.com/FeyZha/animation-toolbox/actions/workflows/tests.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 给 AI 使用的动画工具目录：按需求找到工具，读取对应使用说明，获取固定 commit 的源码，再按上游方法执行。
 
 **AI 从 [SKILL.md](SKILL.md) 开始。** 工作边界见 [AGENTS.md](AGENTS.md)，工具事实与版本状态以 [catalog.json](catalog.json) 为准。
 
 核心脚本只需要 **Python 3.10+ 与 Git**。具体工具的 Node、Bun、FFmpeg、浏览器等环境按需补齐；本库不会一次安装所有工具，也不全局安装技能。
+
+## 快速开始
+
+```text
+git clone https://github.com/FeyZha/animation-toolbox.git
+cd animation-toolbox
+python scripts/toolbox.py validate
+python scripts/toolbox.py search "讲解神经网络" --output mp4
+```
+
+把这个仓库链接交给 AI，并告诉它：
+
+> 先读 animation-toolbox 的 SKILL.md，根据我的需求选择工具，检查环境，再按对应 GUIDE 制作。除非我明确要求，否则不要检查或更新上游版本。
+
+Python 命令在部分系统上是 `python3`。此仓库可直接克隆使用，无须安装 Python 包或全局技能。首次获取具体工具源码需要联网；检索和本库测试可离线执行。
 
 ## 查找与使用
 
@@ -68,6 +88,8 @@ python -m unittest discover -s tests -v
 
 工具的 `verification` 仅表示记录中那条真实命令的结果。归藏的工具脚本自检、Copilot 的选择器调用等，都不能扩大成整条视频制作流程已通过验证；其他未运行工具标为 `not-run`。
 
+GitHub Actions 在提交和拉取请求中检查目录及本库测试，覆盖 Windows / Linux 和 Python 3.10 / 3.14。它不查询上游 commit、不运行第三方制作工具，也不包含定时任务。
+
 ## 维护边界
 
 本库维护索引、使用入口和必要脚本；第三方源码按固定 commit 下载到被忽略的缓存，来源及许可证链接保留在目录。能力描述和调用方式需要适配时才由 AI 修改。
@@ -75,3 +97,9 @@ python -m unittest discover -s tests -v
 不建设效果配方库、样片积累或审美评价。没有付费模型调用代码；AI 适配由使用本库的当前会话完成。
 
 参考做法：[Copilot Video Gen](https://github.com/abhi-singhs/copilot-video-gen-plugin) 的目录与路由分离、[Agent Skills](https://agentskills.io/specification) 的按需阅读，以及 Git 原生的 [ls-remote](https://git-scm.com/docs/git-ls-remote) / [diff](https://git-scm.com/docs/git-diff)。本场景只做手动 commit 同步，因此没有引入常驻更新机器人。
+
+## 参与和许可
+
+新增工具或修正入口请按 [贡献指南](CONTRIBUTING.md) 提交；问题与建议使用 [Issues](https://github.com/FeyZha/animation-toolbox/issues)。社区约定见 [行为准则](CODE_OF_CONDUCT.md)，漏洞报告见 [安全政策](SECURITY.md)，版本变化见 [更新记录](CHANGELOG.md)。
+
+本库原创代码与文档使用 [MIT 许可](LICENSE)。第三方项目各自保留其许可，详见 [来源与许可说明](THIRD_PARTY_NOTICES.md)；缓存、第三方源码、凭据和任务成果均不包含在发布内容中。

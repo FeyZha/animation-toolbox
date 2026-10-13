@@ -285,6 +285,9 @@ class ToolboxTest(unittest.TestCase):
     def test_commit_uses_bot_fallback_without_configuration_changes(self):
         tb.git("init", "-b", "main", cwd=self.root)
         (self.root / "personal.txt").write_text("unrelated work", encoding="utf-8")
+        (self.root / "README.en.md").write_text("Public project entrypoint", encoding="utf-8")
+        (self.root / ".github").mkdir()
+        (self.root / ".github/pull_request_template.md").write_text("Describe the change", encoding="utf-8")
         with patch.dict(os.environ, {"GIT_CONFIG_GLOBAL":os.devnull,"GIT_CONFIG_SYSTEM":os.devnull}):
             result = tb.commit_updates()
             self.assertEqual(result["status"], "committed")
@@ -292,6 +295,8 @@ class ToolboxTest(unittest.TestCase):
             self.assertEqual(tb.run(["git","config","--local","--get","user.name"],cwd=self.root).returncode, 1)
         files = tb.git("show", "--pretty=", "--name-only", "HEAD", cwd=self.root)
         self.assertIn("catalog.json", files)
+        self.assertIn("README.en.md", files)
+        self.assertIn(".github/pull_request_template.md", files)
         self.assertNotIn("personal.txt", files)
 
     def test_commit_preserves_preexisting_staged_work(self):
