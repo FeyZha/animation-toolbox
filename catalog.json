@@ -1745,6 +1745,1278 @@
         "status": "not-run",
         "checks": []
       }
+    },
+    {
+      "id": "mathlens",
+      "name": "MathLens",
+      "role": "workflow",
+      "summary": "从数学题分析、SVG 讲解和配音脚本制作 Manim 教学视频。",
+      "tasks": [
+        "explainer"
+      ],
+      "outputs": [
+        "mp4",
+        "html",
+        "svg"
+      ],
+      "aliases": [
+        "MathLens",
+        "shuyicc/MathLens"
+      ],
+      "keywords": [
+        "数学",
+        "几何",
+        "教学",
+        "讲解",
+        "题目",
+        "配音"
+      ],
+      "limits": "需要 AI 编写分镜与场景，并使用在线配音；CC BY-NC 4.0 限制商业使用。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "python",
+          "python3"
+        ],
+        [
+          "ffmpeg"
+        ]
+      ],
+      "related": [
+        "manim",
+        "edge-tts",
+        "omnimanim"
+      ],
+      "guide": "tools/mathlens/GUIDE.md",
+      "source": {
+        "repository": "shuyicc/MathLens",
+        "branch": null,
+        "adopted_commit": "d3a73a0ba3ddff05a8d6f9cf19db3bf208dc495e",
+        "observed_commit": "d3a73a0ba3ddff05a8d6f9cf19db3bf208dc495e",
+        "checked_at": "2026-10-13T12:10:27+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/shuyicc/MathLens/blob/d3a73a0ba3ddff05a8d6f9cf19db3bf208dc495e/README.md",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "omnimanim",
+      "name": "OmniManim",
+      "role": "workbench",
+      "summary": "用模型生成 Manim 教学场景，渲染后评测并迭代改进，可配旁白。",
+      "tasks": [
+        "explainer"
+      ],
+      "outputs": [
+        "mp4"
+      ],
+      "aliases": [
+        "OmniManim",
+        "AI4Learning-Club/OmniManim"
+      ],
+      "keywords": [
+        "数学",
+        "教学",
+        "讲解",
+        "多智能体",
+        "评测",
+        "配音"
+      ],
+      "limits": "生成与视觉评测需要模型接口；局部渲染成功不等于完整生成流程成功，固定版本未明确授予开源许可。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "python",
+          "python3"
+        ],
+        [
+          "ffmpeg"
+        ]
+      ],
+      "related": [
+        "manim",
+        "mathlens",
+        "edge-tts"
+      ],
+      "guide": "tools/omnimanim/GUIDE.md",
+      "source": {
+        "repository": "AI4Learning-Club/OmniManim",
+        "branch": null,
+        "adopted_commit": "6a6041fd45300a9220f5d4d6c1c74105a3751697",
+        "observed_commit": "6a6041fd45300a9220f5d4d6c1c74105a3751697",
+        "checked_at": "2026-10-13T12:10:26+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/AI4Learning-Club/OmniManim/blob/6a6041fd45300a9220f5d4d6c1c74105a3751697/README.md",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "paul-explainer",
+      "name": "Paul Explainer Video",
+      "role": "workflow",
+      "summary": "以真实逐词配音时间驱动 Manim 动画节拍，输出有声讲解视频。",
+      "tasks": [
+        "explainer",
+        "product"
+      ],
+      "outputs": [
+        "mp4"
+      ],
+      "aliases": [
+        "PaulLemaistre/explainer-video",
+        "Paul Explainer"
+      ],
+      "keywords": [
+        "讲解",
+        "配音",
+        "逐词",
+        "同步",
+        "数学",
+        "分镜"
+      ],
+      "limits": "默认需要 Speechify 凭据和逐词时间数据；上游要求 Python 3.11+，Windows 未验证。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "python",
+          "python3"
+        ],
+        [
+          "bash"
+        ],
+        [
+          "ffmpeg"
+        ]
+      ],
+      "related": [
+        "manim",
+        "manim-voiceover",
+        "mng-explainer"
+      ],
+      "guide": "tools/paul-explainer/GUIDE.md",
+      "source": {
+        "repository": "PaulLemaistre/explainer-video",
+        "branch": null,
+        "adopted_commit": "feb33d880bebfd82730534c1adc7443e711aa267",
+        "observed_commit": "feb33d880bebfd82730534c1adc7443e711aa267",
+        "checked_at": "2026-10-13T12:10:28+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/PaulLemaistre/explainer-video/blob/feb33d880bebfd82730534c1adc7443e711aa267/LICENSE",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "manimgl",
+      "name": "ManimGL / 3Blue1Brown Manim",
+      "role": "engine",
+      "summary": "3Blue1Brown 原始 Manim 引擎，以 OpenGL 绘制精确数学与技术动画。",
+      "tasks": [
+        "explainer",
+        "data",
+        "generative"
+      ],
+      "outputs": [
+        "mp4"
+      ],
+      "aliases": [
+        "3b1b/manim",
+        "ManimGL",
+        "manimlib",
+        "3Blue1Brown"
+      ],
+      "keywords": [
+        "数学",
+        "几何",
+        "神经网络",
+        "前向传播",
+        "OpenGL",
+        "3b1b"
+      ],
+      "limits": "与 Manim Community 的导入、命令和接口不同；需要 OpenGL，公式另需 LaTeX。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "python",
+          "python3"
+        ],
+        [
+          "ffmpeg"
+        ]
+      ],
+      "related": [
+        "manim",
+        "motion-studio"
+      ],
+      "guide": "tools/manimgl/GUIDE.md",
+      "source": {
+        "repository": "3b1b/manim",
+        "branch": null,
+        "adopted_commit": "fafa083a4fb274bba9cabde0b6e2f50ba6da0622",
+        "observed_commit": "fafa083a4fb274bba9cabde0b6e2f50ba6da0622",
+        "checked_at": "2026-10-13T12:10:32+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/3b1b/manim/blob/fafa083a4fb274bba9cabde0b6e2f50ba6da0622/LICENSE.md",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "motion-studio",
+      "name": "Motion Studio",
+      "role": "workflow",
+      "summary": "将故事板、产品说明或网页转成分镜、资产和动画工程，默认用 Remotion 输出视频。",
+      "tasks": [
+        "product",
+        "explainer",
+        "generative"
+      ],
+      "outputs": [
+        "mp4"
+      ],
+      "aliases": [
+        "Altrym/motion-studio",
+        "motion studio"
+      ],
+      "keywords": [
+        "动效",
+        "分镜",
+        "产品",
+        "宣传",
+        "视觉设计",
+        "导演",
+        "Remotion"
+      ],
+      "limits": "是制作指导流程，仍需渲染引擎；上游同步脚本带自动更新和回传功能，本库普通使用不调用。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "node"
+        ],
+        [
+          "npm"
+        ]
+      ],
+      "related": [
+        "remotion",
+        "iart-motion-design",
+        "p5",
+        "manim",
+        "frontend-design"
+      ],
+      "guide": "tools/motion-studio/GUIDE.md",
+      "source": {
+        "repository": "Altrym/motion-studio",
+        "branch": null,
+        "adopted_commit": "36dd605f2d4c5730708f360e6cc6319d1273d2c7",
+        "observed_commit": "36dd605f2d4c5730708f360e6cc6319d1273d2c7",
+        "checked_at": "2026-10-13T12:10:34+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/Altrym/motion-studio/blob/36dd605f2d4c5730708f360e6cc6319d1273d2c7/README.md",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "iart-motion-design",
+      "name": "iart Motion Design Skills",
+      "role": "workflow",
+      "summary": "提供动画节奏、色彩、构图、艺术指导和 Remotion 等具体制作技能。",
+      "tasks": [
+        "product",
+        "explainer",
+        "music",
+        "interactive",
+        "generative"
+      ],
+      "outputs": [
+        "mp4",
+        "html",
+        "gif"
+      ],
+      "aliases": [
+        "iart-ai/motion-design-skills",
+        "motion-art-direction"
+      ],
+      "keywords": [
+        "艺术指导",
+        "动效",
+        "节奏",
+        "色彩",
+        "构图",
+        "logo",
+        "排版"
+      ],
+      "limits": "技能包提供制作指导，实际输出依赖选定引擎；与 iart Motion Skills 总入口分别固定版本。",
+      "requirements": [
+        [
+          "git"
+        ]
+      ],
+      "related": [
+        "iart-motion-skills",
+        "motion-studio",
+        "remotion",
+        "gsap",
+        "three"
+      ],
+      "guide": "tools/iart-motion-design/GUIDE.md",
+      "source": {
+        "repository": "iart-ai/motion-design-skills",
+        "branch": null,
+        "adopted_commit": "3c129f769d90a1328c209c386492333c9ac62312",
+        "observed_commit": "3c129f769d90a1328c209c386492333c9ac62312",
+        "checked_at": "2026-10-13T12:10:35+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/iart-ai/motion-design-skills/blob/3c129f769d90a1328c209c386492333c9ac62312/LICENSE",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "manim-voiceover",
+      "name": "Manim Voiceover",
+      "role": "library",
+      "summary": "为 Manim Community 场景加入配音、录音与词级动画同步。",
+      "tasks": [
+        "explainer"
+      ],
+      "outputs": [
+        "mp4"
+      ],
+      "aliases": [
+        "ManimCommunity/manim-voiceover",
+        "manim_voiceover"
+      ],
+      "keywords": [
+        "配音",
+        "旁白",
+        "同步",
+        "逐词",
+        "教学",
+        "录音"
+      ],
+      "limits": "依附 Manim Community；配音服务、录音或词级对齐可能需要网络、凭据和额外依赖。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "python",
+          "python3"
+        ],
+        [
+          "ffmpeg"
+        ]
+      ],
+      "related": [
+        "manim",
+        "paul-explainer",
+        "edge-tts"
+      ],
+      "guide": "tools/manim-voiceover/GUIDE.md",
+      "source": {
+        "repository": "ManimCommunity/manim-voiceover",
+        "branch": null,
+        "adopted_commit": "3dc0d95d2f1d9d0937872b3dd68c7b38c4dfc96a",
+        "observed_commit": "3dc0d95d2f1d9d0937872b3dd68c7b38c4dfc96a",
+        "checked_at": "2026-10-13T12:10:36+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/ManimCommunity/manim-voiceover/blob/3dc0d95d2f1d9d0937872b3dd68c7b38c4dfc96a/LICENSE",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "teach-me",
+      "name": "teach-me",
+      "role": "workbench",
+      "summary": "按主题和资料研究、写分镜、配音、生成 Manim 场景，并用视觉反馈修订。",
+      "tasks": [
+        "explainer"
+      ],
+      "outputs": [
+        "mp4"
+      ],
+      "aliases": [
+        "wanxinwanxin/teach-me",
+        "teachme"
+      ],
+      "keywords": [
+        "教学",
+        "讲解",
+        "研究",
+        "多智能体",
+        "配音",
+        "视觉反馈"
+      ],
+      "limits": "需要 Claude CLI 或 Anthropic 接口及所选语音环境；默认配置含 macOS 通知，跨平台时需调整。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "python",
+          "python3"
+        ],
+        [
+          "ffmpeg"
+        ]
+      ],
+      "related": [
+        "manim",
+        "omnimanim",
+        "edge-tts"
+      ],
+      "guide": "tools/teach-me/GUIDE.md",
+      "source": {
+        "repository": "wanxinwanxin/teach-me",
+        "branch": null,
+        "adopted_commit": "a09cee613ab2540d7be7494b3b3c404cf831f9b1",
+        "observed_commit": "a09cee613ab2540d7be7494b3b3c404cf831f9b1",
+        "checked_at": "2026-10-13T12:10:42+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/wanxinwanxin/teach-me/blob/a09cee613ab2540d7be7494b3b3c404cf831f9b1/LICENSE",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "code2video",
+      "name": "Code2Video (lixingit)",
+      "role": "workbench",
+      "summary": "由规划、代码生成和视觉反馈生成可执行 Manim 教学视频。",
+      "tasks": [
+        "explainer"
+      ],
+      "outputs": [
+        "mp4"
+      ],
+      "aliases": [
+        "lixingit/code2video",
+        "Code2Video"
+      ],
+      "keywords": [
+        "教学",
+        "讲解",
+        "论文",
+        "规划",
+        "视觉反馈",
+        "数学"
+      ],
+      "limits": "研究型流水线，需要多种模型/素材接口；单题脚本固定 python3.12，Windows 通常需 Bash 环境。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "python",
+          "python3"
+        ],
+        [
+          "sh",
+          "bash"
+        ],
+        [
+          "ffmpeg"
+        ]
+      ],
+      "related": [
+        "manim",
+        "omnimanim",
+        "teach-me"
+      ],
+      "guide": "tools/code2video/GUIDE.md",
+      "source": {
+        "repository": "lixingit/code2video",
+        "branch": null,
+        "adopted_commit": "a1093a737828b2f7ed24fe75e7d62d704130c192",
+        "observed_commit": "a1093a737828b2f7ed24fe75e7d62d704130c192",
+        "checked_at": "2026-10-13T12:10:47+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/lixingit/code2video/blob/a1093a737828b2f7ed24fe75e7d62d704130c192/LICENSE",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "manimator",
+      "name": "Manimator",
+      "role": "workbench",
+      "summary": "用 LangGraph 编排意图识别、场景规划、代码验证与 Manim 渲染。",
+      "tasks": [
+        "explainer"
+      ],
+      "outputs": [
+        "mp4"
+      ],
+      "aliases": [
+        "nabin2004/Manimator",
+        "Manimator"
+      ],
+      "keywords": [
+        "数学",
+        "计算机",
+        "AI",
+        "LangGraph",
+        "教学",
+        "讲解"
+      ],
+      "limits": "实验项目，示例含固定模型与题目；需要兼容模型接口，固定版本未见明确许可文本。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "python",
+          "python3"
+        ],
+        [
+          "ffmpeg"
+        ]
+      ],
+      "related": [
+        "manim",
+        "omnimanim",
+        "teach-me"
+      ],
+      "guide": "tools/manimator/GUIDE.md",
+      "source": {
+        "repository": "nabin2004/Manimator",
+        "branch": null,
+        "adopted_commit": "541f47a678e96e6c08b4ee71dd0985523b508685",
+        "observed_commit": "541f47a678e96e6c08b4ee71dd0985523b508685",
+        "checked_at": "2026-10-13T12:10:52+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/nabin2004/Manimator/blob/541f47a678e96e6c08b4ee71dd0985523b508685/README.md",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "mng-explainer",
+      "name": "Mng Explainer Video",
+      "role": "workflow",
+      "summary": "用 HTML、SVG 与 GSAP 编排讲解页面，经浏览器录制和配音合成 MP4。",
+      "tasks": [
+        "explainer",
+        "product"
+      ],
+      "outputs": [
+        "mp4",
+        "html"
+      ],
+      "aliases": [
+        "Mng-dev-ai/explainer-video",
+        "Mng Explainer"
+      ],
+      "keywords": [
+        "讲解",
+        "网页",
+        "SVG",
+        "GSAP",
+        "配音",
+        "浏览器录制"
+      ],
+      "limits": "需要 Node、Playwright 浏览器、FFmpeg 和在线 Edge 配音；与 Paul 的 Manim 流程不同。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "node"
+        ],
+        [
+          "npm"
+        ],
+        [
+          "ffmpeg"
+        ]
+      ],
+      "related": [
+        "gsap",
+        "edge-tts",
+        "paul-explainer",
+        "fix-webm-duration"
+      ],
+      "guide": "tools/mng-explainer/GUIDE.md",
+      "source": {
+        "repository": "Mng-dev-ai/explainer-video",
+        "branch": null,
+        "adopted_commit": "1a534c29ac89cfc5d8ecb68402cbe41b6ef897e4",
+        "observed_commit": "1a534c29ac89cfc5d8ecb68402cbe41b6ef897e4",
+        "checked_at": "2026-10-13T12:10:50+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/Mng-dev-ai/explainer-video/blob/1a534c29ac89cfc5d8ecb68402cbe41b6ef897e4/LICENSE",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "code-explainer-film",
+      "name": "Code Explainer Film",
+      "role": "workflow",
+      "summary": "从可编辑三场景模板制作产品讲解，使用 Manim、Edge 配音与 FFmpeg 拼接。",
+      "tasks": [
+        "product",
+        "explainer"
+      ],
+      "outputs": [
+        "mp4"
+      ],
+      "aliases": [
+        "kobyal/code-explainer-film"
+      ],
+      "keywords": [
+        "产品",
+        "讲解",
+        "模板",
+        "旁白",
+        "分镜",
+        "配音"
+      ],
+      "limits": "需要手工或 AI 修改分镜、旁白与场景；按场景补齐时长不保证逐词同步。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "python",
+          "python3"
+        ],
+        [
+          "ffmpeg"
+        ],
+        [
+          "ffprobe"
+        ]
+      ],
+      "related": [
+        "manim",
+        "edge-tts",
+        "paul-explainer"
+      ],
+      "guide": "tools/code-explainer-film/GUIDE.md",
+      "source": {
+        "repository": "kobyal/code-explainer-film",
+        "branch": null,
+        "adopted_commit": "384aa04127e4fc5c8775e615b65f205f27643c25",
+        "observed_commit": "384aa04127e4fc5c8775e615b65f205f27643c25",
+        "checked_at": "2026-10-13T12:11:08+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/kobyal/code-explainer-film/blob/384aa04127e4fc5c8775e615b65f205f27643c25/LICENSE",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "frontend-design",
+      "name": "Anthropic Frontend Design",
+      "role": "workflow",
+      "summary": "为网页与动画页面提供视觉方向、字体、色彩和版式指导。",
+      "tasks": [
+        "product",
+        "interactive",
+        "generative"
+      ],
+      "outputs": [
+        "html"
+      ],
+      "aliases": [
+        "anthropics/skills",
+        "anthropic frontend-design"
+      ],
+      "keywords": [
+        "辅助",
+        "设计",
+        "前端",
+        "字体",
+        "版式",
+        "视觉",
+        "界面"
+      ],
+      "limits": "只收录 anthropics/skills 中的 frontend-design 技能；不提供视频渲染或配音。",
+      "requirements": [
+        [
+          "git"
+        ]
+      ],
+      "related": [
+        "motion-studio",
+        "gsap",
+        "motion",
+        "mng-explainer"
+      ],
+      "guide": "tools/frontend-design/GUIDE.md",
+      "source": {
+        "repository": "anthropics/skills",
+        "branch": null,
+        "adopted_commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+        "observed_commit": "dbd4588f9e1033efb41dad4bef2f7947c8993d44",
+        "checked_at": "2026-10-13T12:11:54+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/anthropics/skills/blob/dbd4588f9e1033efb41dad4bef2f7947c8993d44/skills/frontend-design/LICENSE.txt",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "edge-tts",
+      "name": "edge-tts",
+      "role": "library",
+      "summary": "使用 Microsoft Edge 在线语音服务生成旁白 MP3 与 SRT 字幕。",
+      "tasks": [
+        "explainer",
+        "product"
+      ],
+      "outputs": [
+        "mp3",
+        "srt"
+      ],
+      "aliases": [
+        "rany2/edge-tts",
+        "edge_tts"
+      ],
+      "keywords": [
+        "辅助",
+        "配音",
+        "旁白",
+        "语音",
+        "字幕",
+        "中文",
+        "TTS"
+      ],
+      "limits": "需要联网，服务可用性和音色取决于 Microsoft；不生成动画或视频。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "python",
+          "python3"
+        ]
+      ],
+      "related": [
+        "mathlens",
+        "omnimanim",
+        "code-explainer-film",
+        "mng-explainer"
+      ],
+      "guide": "tools/edge-tts/GUIDE.md",
+      "source": {
+        "repository": "rany2/edge-tts",
+        "branch": null,
+        "adopted_commit": "4bdb8e4c6ea62f151a45a3fceb4cf6ff696bb89f",
+        "observed_commit": "4bdb8e4c6ea62f151a45a3fceb4cf6ff696bb89f",
+        "checked_at": "2026-10-13T12:11:14+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/rany2/edge-tts/blob/4bdb8e4c6ea62f151a45a3fceb4cf6ff696bb89f/LICENSE",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "fix-webm-duration",
+      "name": "fix-webm-duration",
+      "role": "library",
+      "summary": "为 MediaRecorder 生成的 WebM 补入缺失的时长信息。",
+      "tasks": [
+        "product",
+        "explainer",
+        "interactive"
+      ],
+      "outputs": [
+        "webm"
+      ],
+      "aliases": [
+        "yusitnikov/fix-webm-duration",
+        "@fix-webm-duration/fix"
+      ],
+      "keywords": [
+        "辅助",
+        "录屏",
+        "录制",
+        "WebM",
+        "时长",
+        "修复",
+        "MediaRecorder"
+      ],
+      "limits": "需要录制时准确计时；只修补 WebM 时长元数据，不渲染动画或转换 MP4。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "node"
+        ],
+        [
+          "npm"
+        ]
+      ],
+      "related": [
+        "mng-explainer",
+        "p5",
+        "gsap"
+      ],
+      "guide": "tools/fix-webm-duration/GUIDE.md",
+      "source": {
+        "repository": "yusitnikov/fix-webm-duration",
+        "branch": null,
+        "adopted_commit": "7bbd85d3d42e29f3c0f7225588cf1b553309550b",
+        "observed_commit": "7bbd85d3d42e29f3c0f7225588cf1b553309550b",
+        "checked_at": "2026-10-13T12:11:52+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/yusitnikov/fix-webm-duration/blob/7bbd85d3d42e29f3c0f7225588cf1b553309550b/LICENSE",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
     }
   ]
 }

@@ -11,3 +11,5 @@ The toolbox's selection and documentation approach draws on these public resourc
 - [Git documentation](https://git-scm.com/docs) and [GitHub REST documentation](https://docs.github.com/en/rest): native commit queries, file comparisons, and paginated commit summaries.
 
 本仓库没有把上游项目打包或重新授权。第三方项目及其素材继续适用各自许可；工具的来源、固定版本和许可入口以 `catalog.json` 为准。
+
+The catalog includes projects with different terms: MathLens declares CC BY-NC 4.0; the frontend-design subdirectory of anthropics/skills carries Apache-2.0; edge-tts uses LGPLv3 for most files and MIT for its SRT composer. The pinned OmniManim and Manimator sources do not provide clear license grants. Motion Studio declares MIT in its README and identifies separately attributed companion skills. Check each pinned source rather than assuming the toolbox's MIT license applies.

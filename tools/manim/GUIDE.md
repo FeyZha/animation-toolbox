@@ -2,6 +2,8 @@
 
 版本、角色、依赖与验证状态以 [catalog.json](../../catalog.json) 的 `manim` 为准。
 
+本入口是 Manim Community；3Blue1Brown 原始引擎见 [ManimGL](../manimgl/GUIDE.md)。两者的安装、导入和渲染命令不同。
+
 在本库根目录先执行：
 
 ```text

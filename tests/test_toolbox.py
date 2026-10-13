@@ -308,5 +308,53 @@ class ToolboxTest(unittest.TestCase):
         self.assertEqual(tb.git("diff","--cached","--name-only",cwd=self.root).strip(), "personal.txt")
 
 
+class PublishedCatalogTest(unittest.TestCase):
+    def test_explored_projects_have_distinct_searchable_entries(self):
+        catalog = tb.read_json(REPOSITORY_ROOT / "catalog.json")
+        expected = {
+            "mathlens": "shuyicc/MathLens",
+            "omnimanim": "AI4Learning-Club/OmniManim",
+            "paul-explainer": "PaulLemaistre/explainer-video",
+            "manimgl": "3b1b/manim",
+            "manim": "ManimCommunity/manim",
+            "motion-studio": "Altrym/motion-studio",
+            "iart-motion-design": "iart-ai/motion-design-skills",
+            "iart-motion-skills": "iart-ai/motion-skills",
+            "manim-voiceover": "ManimCommunity/manim-voiceover",
+            "teach-me": "wanxinwanxin/teach-me",
+            "code2video": "lixingit/code2video",
+            "manimator": "nabin2004/Manimator",
+            "mng-explainer": "Mng-dev-ai/explainer-video",
+            "code-explainer-film": "kobyal/code-explainer-film",
+            "frontend-design": "anthropics/skills",
+            "edge-tts": "rany2/edge-tts",
+            "fix-webm-duration": "yusitnikov/fix-webm-duration",
+        }
+        for identifier, repository in expected.items():
+            with self.subTest(tool=identifier):
+                tool = tb.tool_by_id(catalog, identifier)
+                self.assertEqual(tool["source"]["repository"], repository)
+                self.assertIn(identifier, {row["id"] for row in tb.search(catalog, identifier)})
+
+    def test_supporting_tools_do_not_claim_video_rendering(self):
+        catalog = tb.read_json(REPOSITORY_ROOT / "catalog.json")
+        video_tools = {row["id"] for row in tb.search(catalog, "", output="mp4")}
+        for identifier, output in (("frontend-design", "html"), ("edge-tts", "mp3"),
+                                   ("fix-webm-duration", "webm")):
+            with self.subTest(tool=identifier):
+                self.assertNotIn(identifier, video_tools)
+                self.assertIn(identifier, {row["id"] for row in tb.search(catalog, "辅助", output=output)})
+
+    def test_readme_covers_the_published_inventory(self):
+        catalog = tb.read_json(REPOSITORY_ROOT / "catalog.json")
+        readme = (REPOSITORY_ROOT / "README.md").read_text(encoding="utf-8")
+        english = (REPOSITORY_ROOT / "README.en.md").read_text(encoding="utf-8")
+        self.assertIn(f"共 {len(catalog['tools'])} 项", readme)
+        self.assertIn(f"{len(catalog['tools'])} catalog entries", english)
+        for tool in catalog["tools"]:
+            with self.subTest(tool=tool["id"]):
+                self.assertIn(f"]({tool['guide']})", readme)
+
+
 if __name__ == "__main__":
     unittest.main()

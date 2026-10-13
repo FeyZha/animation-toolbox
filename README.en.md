@@ -2,9 +2,11 @@
 
 [简体中文](README.md) · [Agent entrypoint](SKILL.md) · [Contributing](CONTRIBUTING.md)
 
-An agent-readable catalog of 21 animation, video, and creative coding tools. Find a suitable tool, read its guide, fetch a pinned commit, and use the upstream workflow.
+An agent-readable collection with 36 catalog entries: 28 animation production projects, 5 discovery directories, and 3 supporting tools. Each entry points to a different GitHub repository. Find a suitable tool, read its guide, fetch a pinned commit, and use the upstream workflow.
 
 The catalog separates workflows, workbenches, rendering engines, graphics libraries, and discovery directories. It preserves each project's native commands and distinguishes documented capabilities from commands actually verified. Detailed tool guides are currently in Chinese; agents can translate the selected guide as needed.
+
+ManimGL and Manim Community have separate entries, as do the iart hub and its Motion Design Skills pack. Supporting tools cover frontend design, speech/subtitles, and WebM duration repair; they are not standalone video production routes. The Anthropic entry covers only its frontend-design skill, and bundled subskills are not counted as separate repositories. See [the full catalog table](README.md#分类与收录范围).
 
 ## Get started
 
@@ -54,3 +56,5 @@ See [CONTRIBUTING.md](CONTRIBUTING.md), [the code of conduct](CODE_OF_CONDUCT.md
 ## License and sources
 
 Original toolbox code and documentation are [MIT licensed](LICENSE). Upstream projects retain their own licenses; see [third-party notices](THIRD_PARTY_NOTICES.md). The repository contains catalog metadata, guides, and maintenance scripts. It does not vendor upstream source code, credentials, rendered media, or local caches.
+
+MathLens declares CC BY-NC 4.0, which restricts commercial use. The pinned OmniManim and Manimator sources do not provide clear license grants. Catalog inclusion does not grant permission to redistribute or commercially use upstream content.

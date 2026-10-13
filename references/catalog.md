@@ -12,6 +12,8 @@ catalog.json 是工具事实和版本状态的唯一来源，GUIDE 只写使用�
 
 tasks 按产品宣传、知识讲解、音乐视觉、数据叙事、交互、生成艺术检索；outputs 仅记录原生支持的交付形式，网页库不会因能录屏就自动被标为原生视频工具。
 
+辅助工具沿用 workflow/library 职责，通过用途和限制区分，不新增职责类型。edge-tts 的输出为 mp3/srt，fix-webm-duration 为 webm，Frontend Design 提供网页设计指导；都不标成原生 MP4 制作工具。同仓库的子技能不重复计数，具体子目录写在 GUIDE 中。
+
 source.repository 采用 owner/repo；adopted_commit 是固定使用基准；observed_commit 是最后发现的版本；branch=null 表示跟随上游默认分支，而不是假设所有仓库都用 main。
 
 verification.status=not-run 表示未通过本库执行验证。verification.checks 记录实际命令与范围；首次运行和后续版本升级共用此记录，不能把文档核对当作成功运行。

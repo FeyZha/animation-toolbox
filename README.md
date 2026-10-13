@@ -48,13 +48,18 @@ python scripts/toolbox.py fetch xm
 
 | 职责 | 工具入口 |
 |---|---|
-| 选用工作台 | [Copilot Video Gen](tools/copilot-video-gen/GUIDE.md)、[Motion Anything](tools/motion-anything/GUIDE.md) |
-| 制作流程 | [归藏](tools/guizang/GUIDE.md)、[Claude Motion](tools/claude-motion/GUIDE.md)、[iart Motion Skills](tools/iart-motion-skills/GUIDE.md) |
-| 动画与视频工程 | [XM](tools/xm/GUIDE.md)、[Motion Canvas](tools/motion-canvas/GUIDE.md)、[HyperFrames](tools/hyperframes/GUIDE.md)、[Remotion](tools/remotion/GUIDE.md)、[Manim](tools/manim/GUIDE.md) |
+| 选用与生成工作台 | [Copilot Video Gen](tools/copilot-video-gen/GUIDE.md)、[Motion Anything](tools/motion-anything/GUIDE.md)、[OmniManim](tools/omnimanim/GUIDE.md)、[teach-me](tools/teach-me/GUIDE.md)、[Code2Video](tools/code2video/GUIDE.md)、[Manimator](tools/manimator/GUIDE.md) |
+| 制作与设计流程 | [归藏](tools/guizang/GUIDE.md)、[Claude Motion](tools/claude-motion/GUIDE.md)、[Motion Studio](tools/motion-studio/GUIDE.md)、[iart Motion Skills 总入口](tools/iart-motion-skills/GUIDE.md)、[iart Motion Design Skills 具体技能包](tools/iart-motion-design/GUIDE.md) |
+| 知识与产品讲解流程 | [MathLens](tools/mathlens/GUIDE.md)、[Paul Explainer Video](tools/paul-explainer/GUIDE.md)、[Mng Explainer Video](tools/mng-explainer/GUIDE.md)、[Code Explainer Film](tools/code-explainer-film/GUIDE.md) |
+| 动画与视频工程 | [XM](tools/xm/GUIDE.md)、[Motion Canvas](tools/motion-canvas/GUIDE.md)、[HyperFrames](tools/hyperframes/GUIDE.md)、[Remotion](tools/remotion/GUIDE.md)、[Manim Community](tools/manim/GUIDE.md)、[ManimGL / 3Blue1Brown](tools/manimgl/GUIDE.md) |
 | 基础画面库 | [p5.js](tools/p5/GUIDE.md)、[Hydra](tools/hydra/GUIDE.md)、[Three.js](tools/three/GUIDE.md)、[GSAP](tools/gsap/GUIDE.md)、[Motion / Framer Motion](tools/motion/GUIDE.md)、[Theatre.js](tools/theatre/GUIDE.md) |
+| 动画配音同步扩展 | [Manim Voiceover](tools/manim-voiceover/GUIDE.md) |
+| 辅助工具 | [Frontend Design：网页设计指导](tools/frontend-design/GUIDE.md)、[edge-tts：配音与字幕](tools/edge-tts/GUIDE.md)、[fix-webm-duration：录屏时长修复](tools/fix-webm-duration/GUIDE.md) |
 | 资源发现 | [AI 视频技能](tools/awesome-video-skills/GUIDE.md)、[Creative Agentic Coding](tools/awesome-creative-agentic/GUIDE.md)、[Creative Coding](tools/awesome-creative-coding/GUIDE.md)、[Creative Intelligence](tools/awesome-creative-intelligence/GUIDE.md)、[Generative Art](tools/awesome-generative-art/GUIDE.md) |
 
-共 21 项。集合的下游资源保留为发现入口，不自动展开或全部安装。用途筛选值为 `product`、`explainer`、`music`、`data`、`interactive`、`generative`；输出筛选使用目录中的 `mp4`、`html`、`gif`、`svg`、`lottie`、`discovery`。
+共 36 项，对应 36 个不同 GitHub 仓库：28 个动画制作相关项目、5 个资源发现入口、3 个辅助工具。ManimGL 与社区版 Manim、iart 总入口与具体技能包分别建档；同仓库附带的子技能不重复计数。Frontend Design 只收录 Anthropic 技能仓库中的对应文件夹。
+
+集合的下游资源保留为发现入口，不自动展开或全部安装。用途筛选值为 `product`、`explainer`、`music`、`data`、`interactive`、`generative`；输出筛选使用目录中的 `mp4`、`html`、`gif`、`svg`、`lottie`、`mp3`、`srt`、`webm`、`discovery`。辅助工具可用 `search "辅助"` 查找，不算独立视频制作路线。
 
 ## 只有用户主动要求才更新
 
@@ -103,3 +108,5 @@ GitHub Actions 在提交和拉取请求中检查目录及本库测试，覆盖 W
 新增工具或修正入口请按 [贡献指南](CONTRIBUTING.md) 提交；问题与建议使用 [Issues](https://github.com/FeyZha/animation-toolbox/issues)。社区约定见 [行为准则](CODE_OF_CONDUCT.md)，漏洞报告见 [安全政策](SECURITY.md)，版本变化见 [更新记录](CHANGELOG.md)。
 
 本库原创代码与文档使用 [MIT 许可](LICENSE)。第三方项目各自保留其许可，详见 [来源与许可说明](THIRD_PARTY_NOTICES.md)；缓存、第三方源码、凭据和任务成果均不包含在发布内容中。
+
+例如 MathLens 声明 CC BY-NC 4.0，限制商业使用；OmniManim 与 Manimator 的固定版本未提供明确许可文本。收录不代表获得这些项目的再分发或商业使用授权。

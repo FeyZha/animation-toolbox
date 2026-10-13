@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- Restore 12 animation projects omitted from the original catalog and add 3 supporting tools, bringing the catalog to 36 distinct upstream repositories.
+- Add pinned sources, source-specific license links, usage guides, requirements, and search terms for each entry; preserve all original 21 source versions.
+- Distinguish ManimGL from Manim Community, the iart hub from its Motion Design Skills pack, and supporting tools from standalone video workflows.
+- Keep new entries marked not-run: source/documentation review does not constitute production execution.
+
+补齐此前探索记录中的遗漏：28 个动画制作相关项目、5 个发现入口、3 个辅助工具；不展开同仓库子技能计数，不触发原有工具升级。
+
 ## 0.1.0 — 2026-10-13
 
 - Initial public catalog of 21 animation, video, creative coding, and discovery tools.
