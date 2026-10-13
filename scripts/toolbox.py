@@ -15,6 +15,7 @@ import subprocess
 import sys
 import tempfile
 from datetime import datetime, timezone
+from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 ROLES = {"directory", "workflow", "workbench", "engine", "library"}
@@ -163,6 +164,36 @@ def state_path(identifier):
     return inside(ROOT, f".state/{identifier}.json")
 
 
+def upstream_commits(tool, before, after):
+    url_for(tool)
+    endpoint = f"https://api.github.com/repos/{tool['source']['repository']}/compare/{before}...{after}"
+    commits, page = [], 1
+    while True:
+        request = Request(f"{endpoint}?per_page=100&page={page}",
+                          headers={"Accept": "application/vnd.github+json", "User-Agent": "animation-toolbox"})
+        with urlopen(request, timeout=30) as response:
+            data = json.load(response)
+        if not isinstance(data, dict) or not isinstance(data.get("commits"), list):
+            raise ValueError("Invalid upstream comparison response")
+        total = data.get("total_commits")
+        if not isinstance(total, int) or total < 0:
+            raise ValueError("Invalid upstream commit count")
+        for item in data["commits"]:
+            commit = item.get("sha") if isinstance(item, dict) else None
+            details = item.get("commit") if isinstance(item, dict) else None
+            message = details.get("message") if isinstance(details, dict) else None
+            if not isinstance(commit, str) or not SHA.fullmatch(commit) or not isinstance(message, str):
+                raise ValueError("Invalid upstream commit entry")
+            commits.append({"commit": commit, "subject": message.splitlines()[0] if message else ""})
+        if len({row["commit"] for row in commits}) != len(commits) or len(commits) > total:
+            raise ValueError("Inconsistent upstream commit pages")
+        if len(commits) == total:
+            return commits
+        if not data["commits"]:
+            raise ValueError("Incomplete upstream commit pages")
+        page += 1
+
+
 def prepare_update(tool):
     source = tool["source"]
     before, after = source["adopted_commit"], source.get("observed_commit")
@@ -173,14 +204,20 @@ def prepare_update(tool):
     print(f"Preparing {tool['id']} {before[:8]} -> {after[:8]}", file=sys.stderr, flush=True)
     candidate = fetch_source(tool, after)
     git("fetch", "--depth=1", "origin", before, cwd=candidate)
+    commits = upstream_commits(tool, before, after)
     files = git("diff", "--name-only", "-z", before, after, cwd=candidate).rstrip("\x00").split("\x00")
     files = [name for name in files if name]
+    diff_path = inside(ROOT, f".state/diffs/{tool['id']}-{before}-{after}.diff")
+    diff_path.parent.mkdir(parents=True, exist_ok=True)
+    diff_path.write_text(git("diff", "--no-ext-diff", "--no-textconv", "--no-color", before, after,
+                             cwd=candidate), encoding="utf-8")
     review_files = [name for name in files if any(fnmatch.fnmatchcase(name, pattern)
                     for pattern in tool["review_globs"])]
     # This is a change summary only, never a substitute for an execution check.
     documentation_only = bool(files) and not review_files and all(name.lower().endswith(".md") for name in files)
     state = {"id": tool["id"], "base_commit": before, "candidate_commit": after,
              "source_directory": str(candidate), "changed_files": files,
+             "commits": commits, "diff_path": diff_path.relative_to(ROOT).as_posix(),
              "review_files": review_files, "documentation_only": documentation_only,
              "prepared_at": now(), "status": "prepared", "receipt": None}
     write_json(state_path(tool["id"]), state)

@@ -13,6 +13,8 @@ check-updates 只查询指定分支/default HEAD 的 commit，并记录 observed
 
 sync 执行检查并为变更工具获取新旧固定源码、完整文件差异，写入 .state/<id>.json。目录集合可机械更新；可执行项目在相关 GUIDE/接口资料未变化且 automatic_checks 通过时采用。其他情况写明确 needs-ai 原因，保留旧采用版本。--commit 自动提交已经完成的本地变更，不 push。AI 适配完待处理项目后再运行 commit-updates。
 
+更新记录包含新增提交的 commit/标题和全部变更文件；`diff_path` 指向新旧版本的文本差异，二进制文件只标记变化。提交列表使用 GitHub 官方 Compare API 分页获取，避免浅克隆漏掉中间提交；文本差异使用本地 Git 生成，不受 API 的变更文件数量上限影响。公开仓库不需要凭据；API 限流或差异准备失败时保留旧采用版本并报错。这些请求只在主动更新流程中发生。
+
 ## AI 只处理这些事情
 
 - 安装方式、CLI、接口或能力描述改变：检查差异，修改 tools/<id>/GUIDE.md、对应目录字段或本库封装。

@@ -47,8 +47,11 @@ class ToolboxTest(unittest.TestCase):
         tb.write_json(self.root / "catalog.json", self.catalog)
         self.url_patch = patch.object(tb, "url_for", return_value=self.upstream.as_uri())
         self.url_patch.start()
+        self.http_patch = patch.object(tb, "urlopen", side_effect=self.local_comparison)
+        self.http_patch.start()
 
     def tearDown(self):
+        self.http_patch.stop()
         self.url_patch.stop()
         self.root_patch.stop()
         self.assertTrue(self.root.is_relative_to((REPOSITORY_ROOT / ".cache/tests").resolve()))
@@ -70,6 +73,13 @@ class ToolboxTest(unittest.TestCase):
         path.write_text(contents, encoding="utf-8")
         return self.commit()
 
+    def local_comparison(self, request, timeout):
+        before, after = request.full_url.split("/compare/", 1)[1].split("?", 1)[0].split("...")
+        lines = self.git("log", "--reverse", "--format=%H%x09%s", f"{before}..{after}").splitlines()
+        commits = [{"sha": line.split("\t", 1)[0], "commit": {"message": line.split("\t", 1)[1]}}
+                   for line in lines]
+        return io.BytesIO(json.dumps({"total_commits": len(commits), "commits": commits}).encode())
+
     def pending(self):
         self.tool["source"]["observed_commit"] = self.git("rev-parse", "HEAD")
         tb.write_json(self.root / "catalog.json", self.catalog)
@@ -77,7 +87,8 @@ class ToolboxTest(unittest.TestCase):
 
     def test_search_and_doctor_never_check_upstream(self):
         before = (self.root / "catalog.json").read_bytes()
-        with patch.object(tb, "remote_tip", side_effect=AssertionError("Unexpected network")):
+        with patch.object(tb, "remote_tip", side_effect=AssertionError("Unexpected network")), \
+             patch.object(tb, "urlopen", side_effect=AssertionError("Unexpected API call")):
             self.assertEqual(tb.search(self.catalog, "帮我讲解算法")[0]["id"], "demo")
             tb.doctor(self.tool)
             tb.validate(self.catalog)
@@ -113,6 +124,45 @@ class ToolboxTest(unittest.TestCase):
         self.assertEqual(result[0]["status"], "applied")
         self.assertEqual(self.tool["source"]["adopted_commit"], candidate)
         self.assertIn("new", self.tool["verification"]["checks"][0]["stdout"])
+
+    def test_update_context_includes_intermediate_commits_and_text_diff(self):
+        middle = self.change()
+        latest = self.change("README.md", "Different installation\n")
+        state = self.pending()
+        self.assertEqual([row["commit"] for row in state["commits"]], [middle, latest])
+        diff = tb.inside(self.root, state["diff_path"]).read_text(encoding="utf-8")
+        self.assertIn("+Different installation", diff)
+        self.assertIn("+print('new')", diff)
+        self.assertEqual(self.tool["source"]["adopted_commit"], self.old)
+
+    def test_upstream_commit_listing_reads_all_pages(self):
+        entries = [{"sha": f"{number:040x}", "commit": {"message": f"Change {number}\nDetails"}}
+                   for number in range(1, 102)]
+        pages = [io.BytesIO(json.dumps({"total_commits": 101, "commits": batch}).encode())
+                 for batch in (entries[:100], entries[100:])]
+        with patch.object(tb, "urlopen", side_effect=pages) as fetch:
+            commits = tb.upstream_commits(self.tool, self.old, "f" * 40)
+        self.assertEqual(len(commits), 101)
+        self.assertEqual(commits[-1], {"commit": entries[-1]["sha"], "subject": "Change 101"})
+        self.assertIn("per_page=100&page=2", fetch.call_args.args[0].full_url)
+
+    def test_incomplete_or_invalid_commit_responses_are_rejected(self):
+        entry = {"sha": "e" * 40, "commit": {"message": "Change"}}
+        cases = [{"total_commits": 1, "commits": []},
+                 {"total_commits": 2, "commits": [entry, entry]},
+                 {"total_commits": 1, "commits": [{"sha": "e" * 40, "commit": None}]}]
+        for data in cases:
+            with self.subTest(data=data), patch.object(tb, "urlopen", return_value=io.BytesIO(json.dumps(data).encode())):
+                with self.assertRaises(ValueError):
+                    tb.upstream_commits(self.tool, self.old, "f" * 40)
+
+    def test_comparison_failure_preserves_adopted_version(self):
+        candidate = self.change()
+        with patch.object(tb, "urlopen", side_effect=OSError("comparison unavailable")):
+            result = tb.sync(self.catalog, ["demo"])
+        self.assertEqual(result[0]["status"], "prepare-failed")
+        self.assertEqual(self.tool["source"]["adopted_commit"], self.old)
+        self.assertEqual(self.tool["source"]["observed_commit"], candidate)
 
     def test_failed_execution_preserves_old_version_and_pending_candidate(self):
         candidate = self.change(contents="raise SystemExit(3)\n")
