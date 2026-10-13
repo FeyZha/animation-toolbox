@@ -1,0 +1,4 @@
+interface:
+  display_name: "Animation Toolbox"
+  short_description: "按需求选择动画工具，制作产品视频、知识讲解与交互视觉作品"
+  default_prompt: "使用 $animation-toolbox，根据我的需求选择工具并制作可预览的动画成品。"

@@ -402,7 +402,7 @@ def commit_updates():
         raise ValueError("Initialize this toolbox as its own Git repository first")
     if run(["git", "diff", "--cached", "--quiet"], cwd=ROOT).returncode:
         raise ValueError("Existing staged changes found; refusing to include other work")
-    paths = [p for p in ["catalog.json", "tools", "scripts", "references", "tests", "README.md",
+    paths = [p for p in ["catalog.json", "tools", "scripts", "references", "agents", "tests", "README.md",
                          "README.en.md", "AGENTS.md", "SKILL.md", ".gitignore", ".gitattributes",
                          ".github", "LICENSE", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md", "SECURITY.md",
                          "THIRD_PARTY_NOTICES.md", "CHANGELOG.md"] if (ROOT / p).exists()]

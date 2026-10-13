@@ -5,6 +5,7 @@ import io
 import json
 import os
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -288,6 +289,8 @@ class ToolboxTest(unittest.TestCase):
         (self.root / "README.en.md").write_text("Public project entrypoint", encoding="utf-8")
         (self.root / ".github").mkdir()
         (self.root / ".github/pull_request_template.md").write_text("Describe the change", encoding="utf-8")
+        (self.root / "agents").mkdir()
+        (self.root / "agents/openai.yaml").write_text('interface:\n  display_name: "Animation Toolbox"\n', encoding="utf-8")
         with patch.dict(os.environ, {"GIT_CONFIG_GLOBAL":os.devnull,"GIT_CONFIG_SYSTEM":os.devnull}):
             result = tb.commit_updates()
             self.assertEqual(result["status"], "committed")
@@ -297,6 +300,7 @@ class ToolboxTest(unittest.TestCase):
         self.assertIn("catalog.json", files)
         self.assertIn("README.en.md", files)
         self.assertIn(".github/pull_request_template.md", files)
+        self.assertIn("agents/openai.yaml", files)
         self.assertNotIn("personal.txt", files)
 
     def test_commit_preserves_preexisting_staged_work(self):
@@ -309,6 +313,33 @@ class ToolboxTest(unittest.TestCase):
 
 
 class PublishedCatalogTest(unittest.TestCase):
+    def test_installed_skill_runs_from_the_user_project_without_git(self):
+        parent = REPOSITORY_ROOT / ".cache/tests"
+        parent.mkdir(parents=True, exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix="installed-skill-", dir=parent) as temporary:
+            root = Path(temporary)
+            skill = root / "installed skill/animation-toolbox"
+            project = root / "user project"
+            skill.mkdir(parents=True)
+            project.mkdir()
+            for name in ("SKILL.md", "AGENTS.md", "catalog.json", "LICENSE"):
+                shutil.copy2(REPOSITORY_ROOT / name, skill / name)
+            for name in ("scripts", "tools", "references", "agents"):
+                shutil.copytree(REPOSITORY_ROOT / name, skill / name,
+                                ignore=shutil.ignore_patterns("__pycache__"))
+            entrypoint = skill / "scripts/toolbox.py"
+            def invoke(*args):
+                result = subprocess.run([sys.executable, str(entrypoint), *args], cwd=project,
+                                        capture_output=True, text=True, encoding="utf-8", check=True)
+                return json.loads(result.stdout)
+            expected = len(tb.read_json(REPOSITORY_ROOT / "catalog.json")["tools"])
+            self.assertEqual(invoke("validate")["tools"], expected)
+            self.assertIn("manimgl", {row["id"] for row in invoke("search", "ManimGL", "--output", "mp4")})
+            self.assertEqual(invoke("show", "manimgl")["guide_path"],
+                             str((skill / "tools/manimgl/GUIDE.md").resolve()))
+            self.assertFalse((skill / ".git").exists())
+            self.assertEqual(list(project.iterdir()), [])
+
     def test_explored_projects_have_distinct_searchable_entries(self):
         catalog = tb.read_json(REPOSITORY_ROOT / "catalog.json")
         expected = {

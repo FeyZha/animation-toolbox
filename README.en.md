@@ -8,9 +8,29 @@ The catalog separates workflows, workbenches, rendering engines, graphics librar
 
 ManimGL and Manim Community have separate entries, as do the iart hub and its Motion Design Skills pack. Supporting tools cover frontend design, speech/subtitles, and WebM duration repair; they are not standalone video production routes. The Anthropic entry covers only its frontend-design skill, and bundled subskills are not counted as separate repositories. See [the full catalog table](README.md#分类与收录范围).
 
+## Install as a skill (recommended)
+
+Run this from the project where you want to create animations. The installer requires Node.js / npx and Git:
+
+```text
+npx skills add FeyZha/animation-toolbox --skill animation-toolbox
+```
+
+Choose your assistant when prompted, or append `--agent codex`, `--agent claude-code`, or `--agent cursor` to target one. Installation is project-scoped by default. It installs one entrypoint with the complete catalog; production dependencies are installed only when needed.
+
+In assistants that support `$skill-name`, invoke it directly:
+
+```text
+$animation-toolbox Make a 30-second narrated MP4 explaining neural-network forward propagation.
+```
+
+Other assistants can use a natural-language request such as “Use animation-toolbox to create…”. Start a new session if the current one has not discovered the skill. Running the toolbox requires Python 3.10+ and Git. The skill includes catalog, scripts, tool guides, and references; task projects and output belong in your project.
+
+Installation uses the [Skills CLI](https://github.com/vercel-labs/skills). The root SKILL.md is the standard skill entrypoint.
+
 ## Copy this prompt to your AI assistant
 
-Use an assistant that can read files and run commands. Copy the entire prompt and replace the final request. A chat-only assistant can help select tools; production needs a local execution environment.
+If you have not installed the skill, use an assistant that can read files and run commands. Copy the entire prompt and replace the final request. A chat-only assistant can help select tools; production needs a local execution environment.
 
 ```text
 Use https://github.com/FeyZha/animation-toolbox to complete the animation task below.

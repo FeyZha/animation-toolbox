@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Package the toolbox as one installable Agent Skill, with project-scoped Skills CLI instructions, direct invocation examples, and Codex display metadata.
+- Resolve resources from the installed skill directory and keep editable task projects in the user's workspace.
 - Restore 12 animation projects omitted from the original catalog and add 3 supporting tools, bringing the catalog to 36 distinct upstream repositories.
 - Add pinned sources, source-specific license links, usage guides, requirements, and search terms for each entry; preserve all original 21 source versions.
 - Distinguish ManimGL from Manim Community, the iart hub from its Motion Design Skills pack, and supporting tools from standalone video workflows.

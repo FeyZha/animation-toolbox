@@ -11,9 +11,29 @@
 
 核心脚本只需要 **Python 3.10+ 与 Git**。具体工具的 Node、Bun、FFmpeg、浏览器等环境按需补齐；本库不会一次安装所有工具，也不全局安装技能。
 
+## 安装为 Skill（推荐）
+
+在你要制作动画的项目目录运行（安装器需要 Node.js / npx 与 Git）：
+
+```text
+npx skills add FeyZha/animation-toolbox --skill animation-toolbox
+```
+
+按提示选择 AI 助手；也可追加 `--agent codex`、`--agent claude-code` 或 `--agent cursor` 指定一个。默认安装到当前项目，安装的是一个统一入口和完整工具目录，制作工具的依赖按需安装。
+
+安装后，在支持 `$技能名` 的助手中直接调用：
+
+```text
+$animation-toolbox 制作一个约 30 秒的中文配音 MP4，讲清神经网络的前向传播。
+```
+
+其他助手可用自然语言说“使用 animation-toolbox 制作……”。如果当前会话尚未发现技能，重新开启会话后再调用。工具箱运行需要 Python 3.10+ 与 Git；完整的 catalog、scripts、tools 和 references 随技能一起安装，作品保存到用户项目中。
+
+安装方式采用 [Skills CLI](https://github.com/vercel-labs/skills)；根目录的 SKILL.md 就是标准技能入口。
+
 ## 复制给 AI，直接开始
 
-在能读取文件、运行命令的 AI 编程助手中，复制下面整段，替换最后的“我的需求”即可。AI 会按需选工具、准备环境并制作成品；普通聊天窗口可以帮你选型，实际制作需要本地执行环境。
+未安装 Skill 时，也可在能读取文件、运行命令的 AI 编程助手中复制下面整段，替换最后的“我的需求”即可。AI 会按需选工具、准备环境并制作成品；普通聊天窗口可以帮你选型，实际制作需要本地执行环境。
 
 ```text
 请使用 https://github.com/FeyZha/animation-toolbox 完成下面的动画任务。
