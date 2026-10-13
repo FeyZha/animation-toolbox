@@ -1,0 +1,8 @@
+.cache/
+.state/
+work/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example

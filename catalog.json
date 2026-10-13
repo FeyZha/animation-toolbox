@@ -1,0 +1,1750 @@
+{
+  "schema_version": 1,
+  "update_policy": "manual-commit-only",
+  "tools": [
+    {
+      "id": "guizang",
+      "name": "归藏 Product Video",
+      "role": "workflow",
+      "summary": "从真实产品组件、分镜、动画和声音制作软件宣传片。",
+      "tasks": [
+        "product"
+      ],
+      "outputs": [
+        "mp4"
+      ],
+      "aliases": [
+        "归藏",
+        "guizang-product-video-skill"
+      ],
+      "keywords": [
+        "产品",
+        "宣传",
+        "软件",
+        "版本更新",
+        "界面"
+      ],
+      "limits": "需要产品范围和真实组件；技术骨架不代表成片风格。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "node"
+        ],
+        [
+          "npm"
+        ],
+        [
+          "python",
+          "python3"
+        ],
+        [
+          "ffmpeg"
+        ]
+      ],
+      "related": [
+        "claude-motion",
+        "hyperframes"
+      ],
+      "guide": "tools/guizang/GUIDE.md",
+      "source": {
+        "repository": "op7418/guizang-product-video-skill",
+        "branch": null,
+        "adopted_commit": "18842e0f49a9eb2b8c00cc065ec37b314e235aaa",
+        "observed_commit": "18842e0f49a9eb2b8c00cc065ec37b314e235aaa",
+        "checked_at": "2026-10-13T05:19:58+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/op7418/guizang-product-video-skill/tree/18842e0f49a9eb2b8c00cc065ec37b314e235aaa",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [
+        {
+          "argv": [
+            "python",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "tests"
+          ],
+          "cwd": "."
+        }
+      ],
+      "verification": {
+        "status": "command-passed",
+        "commit": "18842e0f49a9eb2b8c00cc065ec37b314e235aaa",
+        "checked_at": "2026-10-13T05:41:11+00:00",
+        "checks": [
+          {
+            "argv": [
+              "python",
+              "-m",
+              "unittest",
+              "discover",
+              "-s",
+              "tests"
+            ],
+            "cwd": ".",
+            "returncode": 0,
+            "stdout": "",
+            "stderr": "...........sss....\n----------------------------------------------------------------------\nRan 18 tests in 0.647s\n\nOK (skipped=3)\n"
+          }
+        ],
+        "environment": {
+          "os": "Windows",
+          "release": "10",
+          "python": "3.11.9"
+        }
+      }
+    },
+    {
+      "id": "xm",
+      "name": "XM Video Engine",
+      "role": "engine",
+      "summary": "使用三维和二维场景、节拍数据逐帧绘制音乐视频。",
+      "tasks": [
+        "music",
+        "generative"
+      ],
+      "outputs": [
+        "mp4"
+      ],
+      "aliases": [
+        "xm-video-engine",
+        "小铭"
+      ],
+      "keywords": [
+        "音乐",
+        "节拍",
+        "字符",
+        "像素",
+        "体素",
+        "粒子",
+        "三维"
+      ],
+      "limits": "需要写场景；ref效果练习多为固定时间编排。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "node"
+        ],
+        [
+          "bun"
+        ],
+        [
+          "ffmpeg"
+        ]
+      ],
+      "related": [
+        "three",
+        "p5",
+        "hydra"
+      ],
+      "guide": "tools/xm/GUIDE.md",
+      "source": {
+        "repository": "xiaoming6680/xm-video-engine",
+        "branch": null,
+        "adopted_commit": "b37f76c12defdccb7146986761cf4b5edf5de827",
+        "observed_commit": "b37f76c12defdccb7146986761cf4b5edf5de827",
+        "checked_at": "2026-10-13T05:19:58+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/xiaoming6680/xm-video-engine/tree/b37f76c12defdccb7146986761cf4b5edf5de827",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "claude-motion",
+      "name": "Claude Motion",
+      "role": "workflow",
+      "summary": "为AI提供运动设计、声音和审片流程，也支持网页仿真导出。",
+      "tasks": [
+        "product",
+        "explainer",
+        "generative"
+      ],
+      "outputs": [
+        "mp4",
+        "html"
+      ],
+      "aliases": [],
+      "keywords": [
+        "仿真",
+        "机械",
+        "拆解",
+        "群体",
+        "讲解",
+        "宣传"
+      ],
+      "limits": "需AI编写具体场景；不同管线分别配置运行环境。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "node"
+        ],
+        [
+          "npm"
+        ],
+        [
+          "python",
+          "python3"
+        ],
+        [
+          "ffmpeg"
+        ]
+      ],
+      "related": [
+        "remotion",
+        "three"
+      ],
+      "guide": "tools/claude-motion/GUIDE.md",
+      "source": {
+        "repository": "whaleyxbt/claude-motion",
+        "branch": null,
+        "adopted_commit": "e627941543d9988b155dc610bb9cc0115a5e365e",
+        "observed_commit": "e627941543d9988b155dc610bb9cc0115a5e365e",
+        "checked_at": "2026-10-13T05:19:58+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/whaleyxbt/claude-motion/tree/e627941543d9988b155dc610bb9cc0115a5e365e",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "motion-anything",
+      "name": "Motion Anything",
+      "role": "workbench",
+      "summary": "本地动效工作台，按意图选择配方并调用已有AI CLI。",
+      "tasks": [
+        "product",
+        "interactive",
+        "generative"
+      ],
+      "outputs": [
+        "html",
+        "mp4",
+        "gif",
+        "lottie"
+      ],
+      "aliases": [],
+      "keywords": [
+        "工作台",
+        "动效",
+        "交互",
+        "文字",
+        "背景"
+      ],
+      "limits": "它列出的AI引擎不是画面渲染引擎；创作需另有可用AI CLI或密钥。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "node"
+        ]
+      ],
+      "related": [
+        "hyperframes",
+        "gsap",
+        "motion"
+      ],
+      "guide": "tools/motion-anything/GUIDE.md",
+      "source": {
+        "repository": "nexu-io/motion-anything",
+        "branch": null,
+        "adopted_commit": "b016900d9ee92fc2d3e4dc520359cc8999d2ed4e",
+        "observed_commit": "b016900d9ee92fc2d3e4dc520359cc8999d2ed4e",
+        "checked_at": "2026-10-13T05:19:58+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/nexu-io/motion-anything/tree/b016900d9ee92fc2d3e4dc520359cc8999d2ed4e",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "hydra",
+      "name": "Hydra",
+      "role": "library",
+      "summary": "浏览器中的实时视频合成、反馈与音频响应工具。",
+      "tasks": [
+        "music",
+        "generative",
+        "interactive"
+      ],
+      "outputs": [
+        "html"
+      ],
+      "aliases": [
+        "hydra-synth"
+      ],
+      "keywords": [
+        "音乐",
+        "迷幻",
+        "纹理",
+        "反馈",
+        "循环",
+        "合成"
+      ],
+      "limits": "原生面向实时画面；MP4需要额外录制或逐帧导出方案。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "node"
+        ],
+        [
+          "npm"
+        ]
+      ],
+      "related": [
+        "p5",
+        "three"
+      ],
+      "guide": "tools/hydra/GUIDE.md",
+      "source": {
+        "repository": "hydra-synth/hydra",
+        "branch": null,
+        "adopted_commit": "523e0feaf3f49899b759ce0e7afabe0114ddfe2b",
+        "observed_commit": "523e0feaf3f49899b759ce0e7afabe0114ddfe2b",
+        "checked_at": "2026-10-13T05:19:58+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/hydra-synth/hydra/tree/523e0feaf3f49899b759ce0e7afabe0114ddfe2b",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "motion-canvas",
+      "name": "Motion Canvas",
+      "role": "engine",
+      "summary": "按时间编排可解释的矢量动画，并与旁白同步。",
+      "tasks": [
+        "explainer",
+        "data"
+      ],
+      "outputs": [
+        "mp4",
+        "html"
+      ],
+      "aliases": [],
+      "keywords": [
+        "讲解",
+        "解释",
+        "流程",
+        "算法",
+        "知识",
+        "图形",
+        "数据"
+      ],
+      "limits": "视频输出要选择对应导出插件；不默认具备语义理解。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "node"
+        ],
+        [
+          "npm"
+        ]
+      ],
+      "related": [
+        "manim",
+        "remotion"
+      ],
+      "guide": "tools/motion-canvas/GUIDE.md",
+      "source": {
+        "repository": "motion-canvas/motion-canvas",
+        "branch": null,
+        "adopted_commit": "7b91435c301d530351dcf5ebb91dd139c002e405",
+        "observed_commit": "7b91435c301d530351dcf5ebb91dd139c002e405",
+        "checked_at": "2026-10-13T05:19:58+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/motion-canvas/motion-canvas/tree/7b91435c301d530351dcf5ebb91dd139c002e405",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "p5",
+      "name": "p5.js",
+      "role": "library",
+      "summary": "适合生成艺术、交互实验与数据图形的浏览器绘图库。",
+      "tasks": [
+        "generative",
+        "interactive",
+        "data"
+      ],
+      "outputs": [
+        "html"
+      ],
+      "aliases": [
+        "p5.js",
+        "processing"
+      ],
+      "keywords": [
+        "粒子",
+        "生成艺术",
+        "交互",
+        "群体",
+        "绘图",
+        "流场"
+      ],
+      "limits": "它不是完整视频制作流程，视频需要另配导出。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "node"
+        ],
+        [
+          "npm"
+        ]
+      ],
+      "related": [
+        "hydra",
+        "three"
+      ],
+      "guide": "tools/p5/GUIDE.md",
+      "source": {
+        "repository": "processing/p5.js",
+        "branch": null,
+        "adopted_commit": "f694279f30c6599638a0fb5ba7fbfe447c1153c1",
+        "observed_commit": "f694279f30c6599638a0fb5ba7fbfe447c1153c1",
+        "checked_at": "2026-10-13T05:19:58+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/processing/p5.js/tree/f694279f30c6599638a0fb5ba7fbfe447c1153c1",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "hyperframes",
+      "name": "HyperFrames",
+      "role": "engine",
+      "summary": "将HTML与可定位时间的动画编排、预览并导出为视频。",
+      "tasks": [
+        "product",
+        "explainer",
+        "data"
+      ],
+      "outputs": [
+        "mp4",
+        "html"
+      ],
+      "aliases": [],
+      "keywords": [
+        "宣传",
+        "网页",
+        "文字",
+        "视频",
+        "图形"
+      ],
+      "limits": "依照选中制作技能的实际产物；有些讲解流程交付的是可导航页面。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "node"
+        ],
+        [
+          "npm"
+        ]
+      ],
+      "related": [
+        "gsap",
+        "three",
+        "remotion"
+      ],
+      "guide": "tools/hyperframes/GUIDE.md",
+      "source": {
+        "repository": "heygen-com/hyperframes",
+        "branch": null,
+        "adopted_commit": "f31b3c982be997897ba989c9975c9b44fe491fda",
+        "observed_commit": "f31b3c982be997897ba989c9975c9b44fe491fda",
+        "checked_at": "2026-10-13T05:19:58+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/heygen-com/hyperframes/tree/f31b3c982be997897ba989c9975c9b44fe491fda",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "theatre",
+      "name": "Theatre.js",
+      "role": "library",
+      "summary": "可视化与代码结合的运动编排库，用于三维或网页动画。",
+      "tasks": [
+        "interactive",
+        "generative",
+        "product"
+      ],
+      "outputs": [
+        "html"
+      ],
+      "aliases": [
+        "theatre.js"
+      ],
+      "keywords": [
+        "镜头",
+        "三维",
+        "时间线",
+        "运动编辑"
+      ],
+      "limits": "需要宿主工程；不是自带全流程MP4导出的成片工具。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "node"
+        ],
+        [
+          "npm"
+        ]
+      ],
+      "related": [
+        "three",
+        "motion"
+      ],
+      "guide": "tools/theatre/GUIDE.md",
+      "source": {
+        "repository": "theatre-js/theatre",
+        "branch": null,
+        "adopted_commit": "6ea82b938ea49609489f6377ded693ccc6ee8f5b",
+        "observed_commit": "6ea82b938ea49609489f6377ded693ccc6ee8f5b",
+        "checked_at": "2026-10-13T05:19:58+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/theatre-js/theatre/tree/6ea82b938ea49609489f6377ded693ccc6ee8f5b",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "remotion",
+      "name": "Remotion",
+      "role": "engine",
+      "summary": "用React组成可逐帧计算和导出的程序化视频。",
+      "tasks": [
+        "product",
+        "explainer",
+        "data"
+      ],
+      "outputs": [
+        "mp4",
+        "gif"
+      ],
+      "aliases": [],
+      "keywords": [
+        "视频",
+        "字幕",
+        "数据",
+        "批量",
+        "宣传"
+      ],
+      "limits": "使用前核对当前许可证与项目范围；网页时钟动画需要改为帧驱动。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "node"
+        ],
+        [
+          "npm"
+        ]
+      ],
+      "related": [
+        "motion",
+        "gsap",
+        "three"
+      ],
+      "guide": "tools/remotion/GUIDE.md",
+      "source": {
+        "repository": "remotion-dev/remotion",
+        "branch": null,
+        "adopted_commit": "6d357b7152d83783e8829f352b2752fd15938d8c",
+        "observed_commit": "6d357b7152d83783e8829f352b2752fd15938d8c",
+        "checked_at": "2026-10-13T05:19:58+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/remotion-dev/remotion/tree/6d357b7152d83783e8829f352b2752fd15938d8c",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "manim",
+      "name": "Manim Community",
+      "role": "engine",
+      "summary": "用Python构造数学、几何和概念解释动画。",
+      "tasks": [
+        "explainer",
+        "data"
+      ],
+      "outputs": [
+        "mp4",
+        "gif"
+      ],
+      "aliases": [
+        "manimce",
+        "Manim Community"
+      ],
+      "keywords": [
+        "数学",
+        "公式",
+        "算法",
+        "神经网络",
+        "解释",
+        "讲解",
+        "几何"
+      ],
+      "limits": "公式可能需要TeX，图形变换本身不保证论证正确。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "python",
+          "python3"
+        ],
+        [
+          "ffmpeg"
+        ]
+      ],
+      "related": [
+        "motion-canvas"
+      ],
+      "guide": "tools/manim/GUIDE.md",
+      "source": {
+        "repository": "ManimCommunity/manim",
+        "branch": null,
+        "adopted_commit": "622520d34190062f32d68af066c80f1c937fc8bf",
+        "observed_commit": "622520d34190062f32d68af066c80f1c937fc8bf",
+        "checked_at": "2026-10-13T05:19:58+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/ManimCommunity/manim/tree/622520d34190062f32d68af066c80f1c937fc8bf",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "three",
+      "name": "Three.js",
+      "role": "library",
+      "summary": "浏览器三维场景、模型、相机与材质能力。",
+      "tasks": [
+        "generative",
+        "interactive",
+        "product"
+      ],
+      "outputs": [
+        "html"
+      ],
+      "aliases": [
+        "three.js",
+        "threejs"
+      ],
+      "keywords": [
+        "三维",
+        "3D",
+        "粒子",
+        "镜头",
+        "空间",
+        "模型"
+      ],
+      "limits": "视频时序、配音和导出需要宿主工程提供。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "node"
+        ],
+        [
+          "npm"
+        ]
+      ],
+      "related": [
+        "xm",
+        "theatre",
+        "hyperframes"
+      ],
+      "guide": "tools/three/GUIDE.md",
+      "source": {
+        "repository": "mrdoob/three.js",
+        "branch": null,
+        "adopted_commit": "3995acf2a9e79ebd2b02c0e9e7f820fa2a4838fb",
+        "observed_commit": "3995acf2a9e79ebd2b02c0e9e7f820fa2a4838fb",
+        "checked_at": "2026-10-13T05:19:58+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/mrdoob/three.js/tree/3995acf2a9e79ebd2b02c0e9e7f820fa2a4838fb",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "gsap",
+      "name": "GSAP",
+      "role": "library",
+      "summary": "控制网页和SVG元素的时间线、运动与形变。",
+      "tasks": [
+        "product",
+        "interactive",
+        "explainer"
+      ],
+      "outputs": [
+        "html",
+        "svg"
+      ],
+      "aliases": [
+        "greensock"
+      ],
+      "keywords": [
+        "时间线",
+        "SVG",
+        "文字",
+        "路径",
+        "网页",
+        "转场"
+      ],
+      "limits": "它负责运动，渲染视频需要宿主导出链路。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "node"
+        ],
+        [
+          "npm"
+        ]
+      ],
+      "related": [
+        "hyperframes",
+        "guizang"
+      ],
+      "guide": "tools/gsap/GUIDE.md",
+      "source": {
+        "repository": "greensock/GSAP",
+        "branch": null,
+        "adopted_commit": "13e2b790546426a1a2e0e9b409f3f8dc6d6611f2",
+        "observed_commit": "13e2b790546426a1a2e0e9b409f3f8dc6d6611f2",
+        "checked_at": "2026-10-13T05:19:58+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/greensock/GSAP/tree/13e2b790546426a1a2e0e9b409f3f8dc6d6611f2",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "motion",
+      "name": "Motion",
+      "role": "library",
+      "summary": "JavaScript、React和Vue中的交互与布局运动库。",
+      "tasks": [
+        "interactive",
+        "product"
+      ],
+      "outputs": [
+        "html"
+      ],
+      "aliases": [
+        "framer-motion",
+        "Framer Motion"
+      ],
+      "keywords": [
+        "交互",
+        "弹簧",
+        "布局",
+        "手势",
+        "网页"
+      ],
+      "limits": "页面交互不等于逐帧视频；根据宿主使用正确入口。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "node"
+        ],
+        [
+          "npm"
+        ]
+      ],
+      "related": [
+        "remotion",
+        "gsap"
+      ],
+      "guide": "tools/motion/GUIDE.md",
+      "source": {
+        "repository": "motiondivision/motion",
+        "branch": null,
+        "adopted_commit": "23b2a5697ffa854d6da4c26b04ea0d2425e033d7",
+        "observed_commit": "23b2a5697ffa854d6da4c26b04ea0d2425e033d7",
+        "checked_at": "2026-10-13T05:19:58+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/motiondivision/motion/tree/23b2a5697ffa854d6da4c26b04ea0d2425e033d7",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "copilot-video-gen",
+      "name": "Copilot Video Gen",
+      "role": "workbench",
+      "summary": "为七种动画工具提供选择器、起步工程和统一导出脚本。",
+      "tasks": [
+        "product",
+        "explainer",
+        "generative"
+      ],
+      "outputs": [
+        "mp4",
+        "html"
+      ],
+      "aliases": [
+        "copilot-video-gen-plugin"
+      ],
+      "keywords": [
+        "选工具",
+        "整合",
+        "视频",
+        "工作台"
+      ],
+      "limits": "主要面向Copilot CLI；原始辅助脚本需要Bash，PowerShell不能直接执行。",
+      "requirements": [
+        [
+          "git"
+        ],
+        [
+          "node"
+        ],
+        [
+          "python",
+          "python3"
+        ],
+        [
+          "bash"
+        ],
+        [
+          "ffmpeg"
+        ]
+      ],
+      "related": [
+        "motion",
+        "gsap",
+        "three",
+        "motion-canvas",
+        "remotion",
+        "manim",
+        "p5"
+      ],
+      "guide": "tools/copilot-video-gen/GUIDE.md",
+      "source": {
+        "repository": "abhi-singhs/copilot-video-gen-plugin",
+        "branch": null,
+        "adopted_commit": "da436d79480a0d6c704203da79111d72b27f8c92",
+        "observed_commit": "da436d79480a0d6c704203da79111d72b27f8c92",
+        "checked_at": "2026-10-13T05:19:58+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/abhi-singhs/copilot-video-gen-plugin/tree/da436d79480a0d6c704203da79111d72b27f8c92",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [
+        {
+          "argv": [
+            "node",
+            "skills/video-gen/scripts/recommend.mjs",
+            "explain a math proof",
+            "--json"
+          ],
+          "cwd": "."
+        }
+      ],
+      "verification": {
+        "status": "command-passed",
+        "commit": "da436d79480a0d6c704203da79111d72b27f8c92",
+        "checked_at": "2026-10-13T05:41:11+00:00",
+        "checks": [
+          {
+            "argv": [
+              "node",
+              "skills/video-gen/scripts/recommend.mjs",
+              "explain a math proof",
+              "--json"
+            ],
+            "cwd": ".",
+            "returncode": 0,
+            "stdout": "{\n  \"prompt\": \"explain a math proof\",\n  \"matched\": true,\n  \"confidence\": \"medium\",\n  \"recommended\": \"manim\",\n  \"recommendedName\": \"Manim\",\n  \"scaffold\": \"scripts/scaffold.sh manim <project-name>\",\n  \"candidates\": [\n    {\n      \"id\": \"manim\",\n      \"name\": \"Manim\",\n      \"category\": \"Educational & Mathematical Visualization\",\n      \"output\": \"Rendered video file (.mp4)\",\n      \"score\": 7,\n      \"matchedKeywords\": [\n        \"math\",\n        \"proof\"\n      ],\n      \"scaffold\": \"scripts/scaffold.sh manim <project-name>\",\n      \"reference\": \"references/manim.md\"\n    },\n    {\n      \"id\": \"motion\",\n      \"name\": \"Motion (Framer Motion)\",\n      \"category\": \"Modern Web Libraries\",\n      \"output\": \"Live web animation (browser)\",\n      \"score\": 0,\n      \"matchedKeywords\": [],\n      \"scaffold\": \"scripts/scaffold.sh motion <project-name>\",\n      \"reference\": \"references/motion.md\"\n    },\n    {\n      \"id\": \"gsap\",\n      \"name\": \"GSAP (GreenSock)\",\n      \"category\": \"Modern Web Libraries\",\n      \"output\": \"Live web animation (browser)\",\n      \"score\": 0,\n      \"matchedKeywords\": [],\n      \"scaffold\": \"scripts/scaffold.sh gsap <project-name>\",\n      \"reference\": \"references/gsap.md\"\n    }\n  ]\n}\n",
+            "stderr": ""
+          }
+        ],
+        "environment": {
+          "os": "Windows",
+          "release": "10",
+          "python": "3.11.9"
+        }
+      }
+    },
+    {
+      "id": "iart-motion-skills",
+      "name": "iart Motion Skills",
+      "role": "workflow",
+      "summary": "按用途组织多个独立的动画制作技能包。",
+      "tasks": [
+        "product",
+        "explainer",
+        "data",
+        "generative"
+      ],
+      "outputs": [
+        "mp4",
+        "html"
+      ],
+      "aliases": [
+        "iart-ai/motion-skills"
+      ],
+      "keywords": [
+        "技能集合",
+        "说明",
+        "数据",
+        "讲解",
+        "地图",
+        "文字"
+      ],
+      "limits": "总目录本身不是统一渲染器；选中子包后再安装对应技能。",
+      "requirements": [
+        [
+          "git"
+        ]
+      ],
+      "related": [
+        "remotion",
+        "manim",
+        "three",
+        "gsap"
+      ],
+      "guide": "tools/iart-motion-skills/GUIDE.md",
+      "source": {
+        "repository": "iart-ai/motion-skills",
+        "branch": null,
+        "adopted_commit": "4a9822375b589294aa369fde44205c62dfcf9c27",
+        "observed_commit": "4a9822375b589294aa369fde44205c62dfcf9c27",
+        "checked_at": "2026-10-13T05:19:58+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/iart-ai/motion-skills/tree/4a9822375b589294aa369fde44205c62dfcf9c27",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "awesome-video-skills",
+      "name": "Awesome Claude Video Skills",
+      "role": "directory",
+      "summary": "按类别发现AI视频技能与工具的项目目录。",
+      "tasks": [],
+      "outputs": [
+        "discovery"
+      ],
+      "aliases": [
+        "awesome-claude-video-skills"
+      ],
+      "keywords": [
+        "发现",
+        "视频工具",
+        "导航",
+        "集合"
+      ],
+      "limits": "只用于发现，不直接执行；第三方评级不是本库的运行验证。",
+      "requirements": [
+        [
+          "git"
+        ]
+      ],
+      "related": [
+        "guizang",
+        "iart-motion-skills",
+        "hyperframes"
+      ],
+      "guide": "tools/awesome-video-skills/GUIDE.md",
+      "source": {
+        "repository": "zhuyansen/awesome-claude-video-skills",
+        "branch": null,
+        "adopted_commit": "7fe98586180c9e9a966295639a15197ad35938c9",
+        "observed_commit": "7fe98586180c9e9a966295639a15197ad35938c9",
+        "checked_at": "2026-10-13T05:19:58+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/zhuyansen/awesome-claude-video-skills/tree/7fe98586180c9e9a966295639a15197ad35938c9",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "awesome-creative-agentic",
+      "name": "Awesome Creative Agentic Coding",
+      "role": "directory",
+      "summary": "发现AI与创意编码交叉领域的工具和资料。",
+      "tasks": [],
+      "outputs": [
+        "discovery"
+      ],
+      "aliases": [
+        "awesome-creative-agentic-coding"
+      ],
+      "keywords": [
+        "发现",
+        "创意编码",
+        "AI",
+        "导航"
+      ],
+      "limits": "目录条目不自动递归安装。",
+      "requirements": [
+        [
+          "git"
+        ]
+      ],
+      "related": [
+        "p5",
+        "hydra"
+      ],
+      "guide": "tools/awesome-creative-agentic/GUIDE.md",
+      "source": {
+        "repository": "Apolotary/awesome-creative-agentic-coding",
+        "branch": null,
+        "adopted_commit": "fd80867b2ba14af4d1cb3b8ea45f99e808c39a91",
+        "observed_commit": "fd80867b2ba14af4d1cb3b8ea45f99e808c39a91",
+        "checked_at": "2026-10-13T05:19:58+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/Apolotary/awesome-creative-agentic-coding/tree/fd80867b2ba14af4d1cb3b8ea45f99e808c39a91",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "awesome-creative-coding",
+      "name": "Awesome Creative Coding",
+      "role": "directory",
+      "summary": "创意编码、生成艺术、可视化和交互资源目录。",
+      "tasks": [],
+      "outputs": [
+        "discovery"
+      ],
+      "aliases": [],
+      "keywords": [
+        "发现",
+        "生成艺术",
+        "创意编码",
+        "交互"
+      ],
+      "limits": "链接目录，不是制作引擎。",
+      "requirements": [
+        [
+          "git"
+        ]
+      ],
+      "related": [
+        "p5",
+        "hydra",
+        "three"
+      ],
+      "guide": "tools/awesome-creative-coding/GUIDE.md",
+      "source": {
+        "repository": "terkelg/awesome-creative-coding",
+        "branch": null,
+        "adopted_commit": "9643124b4a883e20dfb1b79df69505418728dbeb",
+        "observed_commit": "9643124b4a883e20dfb1b79df69505418728dbeb",
+        "checked_at": "2026-10-13T05:19:58+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/terkelg/awesome-creative-coding/tree/9643124b4a883e20dfb1b79df69505418728dbeb",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "awesome-creative-intelligence",
+      "name": "Awesome Creative Intelligence",
+      "role": "directory",
+      "summary": "创意智能相关框架与工具的资源目录。",
+      "tasks": [],
+      "outputs": [
+        "discovery"
+      ],
+      "aliases": [],
+      "keywords": [
+        "发现",
+        "创意",
+        "AI",
+        "导航"
+      ],
+      "limits": "需要继续调查其下游工具，不能把收录视为可运行。",
+      "requirements": [
+        [
+          "git"
+        ]
+      ],
+      "related": [
+        "p5",
+        "three"
+      ],
+      "guide": "tools/awesome-creative-intelligence/GUIDE.md",
+      "source": {
+        "repository": "isaacsight/awesome-creative-intelligence",
+        "branch": null,
+        "adopted_commit": "4576e1ee5ee1d14042e59a20b1951d9c9f2b377b",
+        "observed_commit": "4576e1ee5ee1d14042e59a20b1951d9c9f2b377b",
+        "checked_at": "2026-10-13T05:19:58+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/isaacsight/awesome-creative-intelligence/tree/4576e1ee5ee1d14042e59a20b1951d9c9f2b377b",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    },
+    {
+      "id": "awesome-generative-art",
+      "name": "Awesome Generative Art",
+      "role": "directory",
+      "summary": "生成艺术资源与工具的集合。",
+      "tasks": [],
+      "outputs": [
+        "discovery"
+      ],
+      "aliases": [],
+      "keywords": [
+        "发现",
+        "生成艺术",
+        "导航"
+      ],
+      "limits": "目录自身没有可执行制作流程。",
+      "requirements": [
+        [
+          "git"
+        ]
+      ],
+      "related": [
+        "p5",
+        "hydra"
+      ],
+      "guide": "tools/awesome-generative-art/GUIDE.md",
+      "source": {
+        "repository": "kosmos/awesome-generative-art",
+        "branch": null,
+        "adopted_commit": "725d0ee300d9060a072a21872a1e6d7e7f28c41c",
+        "observed_commit": "725d0ee300d9060a072a21872a1e6d7e7f28c41c",
+        "checked_at": "2026-10-13T05:19:58+00:00",
+        "check_error": null
+      },
+      "license_reference": "https://github.com/kosmos/awesome-generative-art/tree/725d0ee300d9060a072a21872a1e6d7e7f28c41c",
+      "review_globs": [
+        "README*",
+        "readme*",
+        "SKILL.md",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "package*.json",
+        "pyproject.toml",
+        "requirements*.txt",
+        "*.lock",
+        "scripts/**",
+        ".claude/**",
+        ".agents/**",
+        "skills/**",
+        "references/**",
+        "docs/**",
+        "LICENSE*",
+        "COMMERCIAL*",
+        "**/README*",
+        "**/readme*",
+        "**/SKILL.md",
+        "**/package*.json",
+        "**/pyproject.toml",
+        "**/requirements*.txt",
+        "**/LICENSE*"
+      ],
+      "automatic_checks": [],
+      "verification": {
+        "status": "not-run",
+        "checks": []
+      }
+    }
+  ]
+}
